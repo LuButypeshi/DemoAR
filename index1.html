@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Scène 3D A-Frame</title>
+  <title>AR.js - Marqueur Hiro</title>
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 </head>
-<body>
-  <a-scene>
-    <!-- Plan de base -->
-    <a-plane position="0 0 0" rotation="-90 0 0" width="20" height="20" color="#7BC8A4"></a-plane>
+<body style="margin: 0; overflow: hidden;">
+  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
 
-    <!-- Trois boîtes flottant à 2 unités au-dessus du plan -->
-    <a-box position="-3 2 0" color="#E74C3C" width="1" height="1" depth="1"></a-box>
-    <a-box position="0 2 0" color="#3498DB" width="1" height="1" depth="1"></a-box>
-    <a-box position="3 2 0" color="#F1C40F" width="1" height="1" depth="1"></a-box>
+    <a-marker preset="hiro">
+      <a-box
+        position="0 0.5 0"
+        color="#3498DB"
+        material="opacity: 0.5; transparent: true"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 3000; easing: linear">
+      </a-box>
+    </a-marker>
 
-    <!-- Caméra positionnée pour voir toute la scène -->
-    <a-entity position="0 10 15" rotation="-30 0 0" camera look-controls></a-entity>
+    <a-entity camera></a-entity>
 
-    <!-- Lumière (recommandé, sinon la scène est sombre) -->
-    <a-light type="ambient" color="#BBB"></a-light>
-    <a-light type="directional" color="#FFF" intensity="0.6" position="-1 1 1"></a-light>
   </a-scene>
 </body>
 </html>
