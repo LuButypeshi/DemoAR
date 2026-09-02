@@ -1,21 +1,142 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-        <title>Titre de la Page</title>
-    </head>
-    <body>
-        <h1>Bienvenue sur ma page</h1>
-        <a-scene>
-                <a-plane position="0 0 0" rotation="-90 0 0" width="20" height="20" color="#7BC8A4"></a-plane>
-                <a-box position="-3 6 0" rotation="0 0 0" width="1" height="1" depth="1" color="#EF2D5E"></a-box>
-                <a-box position="0 7 0" color="#3498DB" width="1" height="1" depth="1"></a-box>
-                <a-box position="3 8 0" color="#F1C40F" width="1" height="1" depth="1"></a-box>
-                <a-entity position="0 10 15" rotation="-30 0 0" camera look-controls></a-entity>
-                <a-light type="ambient" color="#BBB"></a-light>
-                <a-light type="directional" color="#FFF" intensity="0.6" position="-1 1 1"></a-light>
-                <a-sky color="#FF9876"></a-sky>
-        </a-scene>
-    </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercices A-Frame / AR.js</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .wrap { max-width: 640px; width: 100%; }
+    h1 {
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    p.subtitle {
+      text-align: center;
+      color: #9aa4c4;
+      margin-top: 0;
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+    }
+    ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+    li a {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      background: #22283b;
+      border: 1px solid #333c58;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #eee;
+      transition: transform .15s, background .15s, border-color .15s;
+    }
+    li a:hover {
+      transform: translateY(-2px);
+      background: #2a3350;
+      border-color: #4f5f9c;
+    }
+    .num {
+      flex: 0 0 auto;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #3498DB;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .num.ex1 { background: #3498DB; }
+    .num.ex2 { background: #2ECC71; }
+    .num.ex3 { background: #F1C40F; color: #222; }
+    .num.ex4 { background: #E74C3C; }
+    .num.ex5 { background: #9B59B6; }
+    .num.ex6 { background: #1ABC9C; }
+    .txt strong { display: block; font-size: 1.02rem; }
+    .txt span { display: block; font-size: 0.85rem; color: #9aa4c4; margin-top: 2px; }
+    footer {
+      text-align: center;
+      margin-top: 28px;
+      font-size: 0.8rem;
+      color: #666f8f;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Exercices A-Frame / AR.js</h1>
+    <p class="subtitle">Choisis un exercice à ouvrir. Sur mobile, autorise l'accès à la caméra pour les exercices en réalité augmentée.</p>
+    <ul>
+      <li>
+        <a href="index1.html">
+          <span class="num ex1">1</span>
+          <span class="txt">
+            <strong>Créer une scène 3D avec A-Frame</strong>
+            <span>Trois boîtes flottantes + caméra</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="index2.html">
+          <span class="num ex2">2</span>
+          <span class="txt">
+            <strong>Intégrer AR.js et tester sur mobile</strong>
+            <span>Marqueur Hiro + boîte semi-transparente qui tourne</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="index3.html">
+          <span class="num ex3">3</span>
+          <span class="txt">
+            <strong>Interaction par clic / tap</strong>
+            <span>Curseur, changement de couleur et d'animation</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="index4.html">
+          <span class="num ex4">4</span>
+          <span class="txt">
+            <strong>Marqueur personnalisé</strong>
+            <span>Marqueur Hiro + marqueur .patt perso</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="index5.html">
+          <span class="num ex5">5</span>
+          <span class="txt">
+            <strong>Combiner QR code et marqueur Hiro</strong>
+            <span>Scène AR + guide pour générer le QR composite</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="index6.html">
+          <span class="num ex6">6</span>
+          <span class="txt">
+            <strong>Interface utilisateur (DOM overlay)</strong>
+            <span>Slider de taille + palette de couleurs</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+    <footer></footer>
+  </div>
+</body>
 </html>

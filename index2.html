@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AR.js - Interaction clip/tap</title>
+  <title>AR.js - Marqueur Hiro</title>
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 </head>
@@ -17,39 +17,8 @@
       </a-box>
     </a-marker>
 
-    <a-entity camera>
-        <a-cursor fuse="false"></a-cursor>
-    </a-entity>
+    <a-entity camera></a-entity>
 
   </a-scene>
-  <script>
-    // Get the box element
-    const box = document.querySelector('a-box');
-    let isFast = false;
-    // Add an event listener for the 'click' event
-    box.addEventListener('click', function () {
-      // Change the color of the box when clicked
-      const colors = ['#3498DB', '#F1C40F', '#EF2D5E', '#7BC8A4', '#FF9876', '#9B59B6', '#1ABC9C', '#E74C3C', '#2ECC71', '#F39C12'];
-      const newColor = colors[Math.floor(Math.random() * colors.length)];
-      box.setAttribute('color', newColor);});
-
-       isFast = !isFast;
-      box.setAttribute('animation', {
-        property: 'rotation',
-        to: '0 360 0',
-        loop: true,
-        dur: isFast ? 500 : 3000,
-        easing: 'linear'
-      });
-
-      box.setAttribute('animation__scale', {
-        property: 'scale',
-        from: '1 1 1',
-        to: '1.4 1.4 1.4',
-        dur: 200,
-        dir: 'alternate',
-        loop: 1
-      });
-    </script>
 </body>
 </html>
