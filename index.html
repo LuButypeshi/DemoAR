@@ -3,140 +3,321 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Exercices A-Frame / AR.js</title>
+  <title>~*~ AR EXPERIENCE 2000 ~*~</title>
   <style>
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><text y="18" font-size="18">✨</text></svg>') 12 12, auto; }
+
     body {
       margin: 0;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #1a1a2e, #16213e);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #eee;
+      font-family: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
+      color: #00ffea;
+      background:
+        radial-gradient(1px 1px at 10% 20%, #fff, transparent),
+        radial-gradient(1px 1px at 80% 10%, #fff, transparent),
+        radial-gradient(2px 2px at 40% 60%, #fff, transparent),
+        radial-gradient(1px 1px at 60% 80%, #fff, transparent),
+        radial-gradient(1px 1px at 25% 85%, #fff, transparent),
+        radial-gradient(2px 2px at 90% 70%, #fff, transparent),
+        linear-gradient(#0a0033, #1a0050 40%, #2d0066 70%, #0a0033);
+      background-attachment: fixed;
+      animation: twinkle 3s infinite alternate;
+      overflow-x: hidden;
+    }
+    @keyframes twinkle {
+      0% { filter: brightness(1); }
+      100% { filter: brightness(1.25); }
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    /* ---- TOP MARQUEE BAR ---- */
+    .topbar {
+      background: repeating-linear-gradient(45deg, #ff00cc, #ff00cc 10px, #ffcc00 10px, #ffcc00 20px);
+      padding: 4px 0;
+      border-bottom: 4px dashed #00ffea;
+    }
+    .topbar marquee {
+      color: #000;
+      font-weight: bold;
+      font-size: 0.9rem;
+      text-shadow: 1px 1px 0 #fff;
+    }
+
+    /* ---- TITLE ---- */
+    h1.title {
+      text-align: center;
+      font-size: 2.6rem;
+      margin: 18px 0 4px;
+      background: linear-gradient(90deg, #ff0055, #ff9900, #ffee00, #33ff00, #00ccff, #cc00ff, #ff0055);
+      background-size: 400% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: rainbow 4s linear infinite, blink 1.4s step-start infinite;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    @keyframes rainbow { to { background-position: 400% 0; } }
+    @keyframes blink { 50% { opacity: 0.55; } }
+
+    p.tagline {
+      text-align: center;
+      color: #ffff66;
+      font-size: 1rem;
+      text-shadow: 2px 2px 0 #ff00aa;
+      margin-top: 0;
+    }
+
+    /* ---- UNDER CONSTRUCTION BANNER ---- */
+    .construction {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px;
-    }
-    .wrap { max-width: 640px; width: 100%; }
-    h1 {
-      font-size: 1.8rem;
-      text-align: center;
-      margin-bottom: 8px;
-    }
-    p.subtitle {
-      text-align: center;
-      color: #9aa4c4;
-      margin-top: 0;
-      margin-bottom: 32px;
+      gap: 10px;
+      background: #ffee00;
+      color: #000;
+      border: 4px solid #000;
+      padding: 8px;
+      margin: 18px 0;
+      font-weight: bold;
+      animation: shake 0.4s infinite;
       font-size: 0.95rem;
     }
-    ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
-    li a {
+    @keyframes shake {
+      0%,100% { transform: rotate(0deg); }
+      25% { transform: rotate(-1deg); }
+      75% { transform: rotate(1deg); }
+    }
+
+    /* ---- MAIN PANEL (table-style retro box) ---- */
+    .panel {
+      background: #1a0040;
+      border: 4px ridge #ff00cc;
+      padding: 4px;
+      box-shadow: 0 0 20px #ff00cc88;
+    }
+    .panel-inner {
+      border: 2px dashed #00ffea;
+      padding: 16px;
+    }
+
+    ul.menu { list-style: none; padding: 0; margin: 0; }
+    ul.menu li {
+      margin-bottom: 12px;
+    }
+    ul.menu a {
       display: flex;
       align-items: center;
-      gap: 16px;
-      padding: 18px 20px;
-      background: #22283b;
-      border: 1px solid #333c58;
-      border-radius: 12px;
+      gap: 12px;
+      background: linear-gradient(180deg, #330066, #1a0033);
+      border: 3px outset #cc00ff;
+      padding: 10px 14px;
       text-decoration: none;
-      color: #eee;
-      transition: transform .15s, background .15s, border-color .15s;
+      color: #ffff33;
+      font-weight: bold;
+      font-size: 1rem;
+      text-shadow: 1px 1px 0 #000;
+      transition: transform 0.1s;
     }
-    li a:hover {
-      transform: translateY(-2px);
-      background: #2a3350;
-      border-color: #4f5f9c;
+    ul.menu a:hover {
+      transform: scale(1.03) rotate(-0.5deg);
+      border-style: inset;
+      background: linear-gradient(180deg, #660099, #33006b);
     }
-    .num {
+    ul.menu a:active { transform: scale(0.98); }
+
+    .badge {
       flex: 0 0 auto;
-      width: 40px;
-      height: 40px;
+      background: #00ffea;
+      color: #1a0040;
       border-radius: 50%;
-      background: #3498DB;
+      width: 34px;
+      height: 34px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
-      font-size: 1.1rem;
+      font-size: 1rem;
+      border: 2px solid #000;
     }
-    .num.ex1 { background: #3498DB; }
-    .num.ex2 { background: #2ECC71; }
-    .num.ex3 { background: #F1C40F; color: #222; }
-    .num.ex4 { background: #E74C3C; }
-    .num.ex5 { background: #9B59B6; }
-    .num.ex6 { background: #1ABC9C; }
-    .txt strong { display: block; font-size: 1.02rem; }
-    .txt span { display: block; font-size: 0.85rem; color: #9aa4c4; margin-top: 2px; }
+    .newgif {
+      background: #ff0000;
+      color: #fff;
+      font-size: 0.65rem;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-left: auto;
+      animation: blink 0.8s step-start infinite;
+      font-weight: bold;
+    }
+    .desc { display: block; font-size: 0.75rem; color: #ccbbff; font-weight: normal; }
+
+    /* ---- HIT COUNTER ---- */
+    .counter-wrap {
+      text-align: center;
+      margin: 22px 0 10px;
+    }
+    .counter {
+      display: inline-flex;
+      background: #000;
+      border: 2px solid #666;
+      padding: 4px 8px;
+      gap: 3px;
+      font-family: "Courier New", monospace;
+      font-weight: bold;
+    }
+    .counter span {
+      background: #111;
+      color: #00ff00;
+      padding: 2px 6px;
+      font-size: 1.1rem;
+      border: 1px solid #333;
+    }
+    .counter-label { font-size: 0.75rem; color: #aaa; margin-top: 4px; }
+
+    /* ---- BADGES ROW ---- */
+    .badges-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 22px 0;
+    }
+    .webbadge {
+      background: #000;
+      color: #0f0;
+      font-family: "Courier New", monospace;
+      font-size: 0.65rem;
+      padding: 6px 10px;
+      border: 1px solid #0f0;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .webbadge.b2 { color: #ff0; border-color: #ff0; }
+    .webbadge.b3 { color: #f0f; border-color: #f0f; }
+
     footer {
       text-align: center;
-      margin-top: 28px;
-      font-size: 0.8rem;
-      color: #666f8f;
+      font-size: 0.75rem;
+      color: #9988cc;
+      margin: 24px 0 10px;
+      line-height: 1.6;
+    }
+    footer .sig { color: #ff66cc; font-style: italic; }
+
+    hr.sep {
+      border: none;
+      height: 3px;
+      background: repeating-linear-gradient(90deg, #ff00cc 0 8px, #00ffea 8px 16px);
+      margin: 20px 0;
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <h1>Exercices A-Frame / AR.js</h1>
-    <p class="subtitle">Choisis un exercice à ouvrir. Sur mobile, autorise l'accès à la caméra pour les exercices en réalité augmentée.</p>
-    <ul>
-      <li>
-        <a href="index1.html">
-          <span class="num ex1">1</span>
-          <span class="txt">
-            <strong>Créer une scène 3D avec A-Frame</strong>
-            <span>Trois boîtes flottantes + caméra</span>
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="index2.html">
-          <span class="num ex2">2</span>
-          <span class="txt">
-            <strong>Intégrer AR.js et tester sur mobile</strong>
-            <span>Marqueur Hiro + boîte semi-transparente qui tourne</span>
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="index3.html">
-          <span class="num ex3">3</span>
-          <span class="txt">
-            <strong>Interaction par clic / tap</strong>
-            <span>Curseur, changement de couleur et d'animation</span>
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="index4.html">
-          <span class="num ex4">4</span>
-          <span class="txt">
-            <strong>Marqueur personnalisé</strong>
-            <span>Marqueur Hiro + marqueur .patt perso</span>
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="index5.html">
-          <span class="num ex5">5</span>
-          <span class="txt">
-            <strong>Combiner QR code et marqueur Hiro</strong>
-            <span>Scène AR + guide pour générer le QR composite</span>
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="index6.html">
-          <span class="num ex6">6</span>
-          <span class="txt">
-            <strong>Interface utilisateur (DOM overlay)</strong>
-            <span>Slider de taille + palette de couleurs</span>
-          </span>
-        </a>
-      </li>
-    </ul>
-    <footer></footer>
+
+  <div class="topbar">
+    <marquee behavior="scroll" direction="left" scrollamount="5">
+      ★彡 BIENVENUE SUR MON SITE AR ★彡 BEST VIEWED AT 800x600 ★彡 N'OUBLIEZ PAS DE SIGNER LE GUESTBOOK ★彡 100% FAIT MAIN ★彡 AUCUN COOKIE NE FUT MANGÉ PENDANT LA CONSTRUCTION DE CE SITE ★彡
+    </marquee>
   </div>
+
+  <div class="container">
+
+    <h1 class="title">☆ AR Experience 2000 ☆</h1>
+    <p class="tagline">// le futur de la réalité augmentée, en direct de l'an 2000 //</p>
+
+    <div class="construction">
+      🚧 SITE EN CONSTRUCTION PERMANENTE 🚧 REVENEZ BIENTÔT POUR PLUS DE MAGIE 🚧
+    </div>
+
+    <div class="panel">
+      <div class="panel-inner">
+        <ul class="menu">
+          <li>
+            <a href="exercice1.html">
+              <span class="badge">①</span>
+              <span>
+                Scène 3D A-Frame
+                <span class="desc">boîtes flottantes + caméra</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="exercice2.html">
+              <span class="badge">②</span>
+              <span>
+                AR.js + Marqueur Hiro
+                <span class="desc">boîte holographique qui tourne</span>
+              </span>
+              <span class="newgif">NEW!</span>
+            </a>
+          </li>
+          <li>
+            <a href="exercice3.html">
+              <span class="badge">③</span>
+              <span>
+                Interaction clic / tap
+                <span class="desc">touche la boîte magique !!!</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="exercice4.html">
+              <span class="badge">④</span>
+              <span>
+                Marqueur personnalisé
+                <span class="desc">ton propre symbole AR</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="exercice5.html">
+              <span class="badge">⑤</span>
+              <span>
+                QR Code + Hiro
+                <span class="desc">scan-moi si tu peux</span>
+              </span>
+              <span class="newgif">HOT!</span>
+            </a>
+          </li>
+          <li>
+            <a href="exercice6.html">
+              <span class="badge">⑥</span>
+              <span>
+                Panneau de contrôle AR
+                <span class="desc">slider + couleurs en direct</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="counter-wrap">
+      <div class="counter">
+        <span>0</span><span>0</span><span>1</span><span>3</span><span>3</span><span>7</span>
+      </div>
+      <div class="counter-label">visiteurs depuis 2000 (environ)</div>
+    </div>
+
+    <div class="badges-row">
+      <div class="webbadge">◄ BEST VIEWED WITH<br>ANY BROWSER ►</div>
+      <div class="webbadge b2">⚡ POWERED BY<br>PUR CSS ⚡</div>
+      <div class="webbadge b3">✓ 56K MODEM<br>FRIENDLY ✓</div>
+    </div>
+
+    <hr class="sep">
+
+    <footer>
+      Ce site fonctionne mieux avec de la musique MIDI en fond sonore imaginaire.<br>
+      Aucune animation Flash n'a été utilisée (elles ont pris leur retraite).<br>
+      <span class="sig">~ made with ✨ nostalgie ✨ et beaucoup de balises &lt;marquee&gt; ~</span>
+    </footer>
+
+  </div>
+
 </body>
 </html>
